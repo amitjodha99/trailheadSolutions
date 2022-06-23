@@ -1,0 +1,13 @@
+public class AccountProcessor {
+    @future
+    public static void countContacts(List<Id> accounts) {
+        List<Account> toUpdate = new List<Account>();
+        for(Id curAcc: accounts) {
+            Contact[] contacts = [Select Id FROM Contact where Account.Id =:curAcc];
+            Account acc = [Select Id FROM Account];
+            acc.Number_Of_Contacts__c = contacts.size();
+            toUpdate.add(acc);
+        }
+        upsert toUpdate;
+    }
+}
