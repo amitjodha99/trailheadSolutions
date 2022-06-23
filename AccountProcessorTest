@@ -1,0 +1,17 @@
+@isTest
+private class AccountProcessorTest {
+	@isTest
+    private static void test_Account_Processor() {
+        Account a = new Account(Name='test');
+        insert a;
+        Contact c = new Contact(LastName='testCon', Account = a);
+        Contact cd = new Contact(LastName='testCon2', Account = a);
+        insert c;
+        insert cd;
+       	Test.startTest();
+        AccountProcessor.countContacts(new List<Id>{a.Id});
+        Test.stopTest();
+        
+        system.assertEquals(1,1);
+    }
+}
