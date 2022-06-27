@@ -1,0 +1,13 @@
+@isTest
+private class LeadProcessorTest {
+
+   	@isTest
+    private static void testLead(){
+        Lead one = new Lead(LastName='test', Company='testC');
+        insert one;
+        Test.startTest();
+        LeadProcessor lp = new LeadProcessor();
+        Id batchId = Database.executeBatch(lp);
+        Test.stopTest();
+    }
+}
